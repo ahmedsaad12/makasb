@@ -1,13 +1,18 @@
 import 'dart:convert';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:makasb/colors/colors.dart';
 import 'package:makasb/routes/app_routes.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: AppColors.white,
+    ),
+  );
   runApp(EasyLocalization(
       supportedLocales: const [Locale('ar',''), Locale('en','')],
       path: 'assets/lang',
