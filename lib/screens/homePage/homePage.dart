@@ -7,6 +7,7 @@ import 'package:makasb/constants/app_constant.dart';
 import 'package:makasb/routes/app_routes.dart';
 import 'package:makasb/screens/homePage/widget/coinsWidget.dart';
 import 'package:makasb/screens/homePage/widget/homeWidget.dart';
+import 'package:makasb/screens/homePage/widget/profileWidget.dart';
 import 'package:makasb/screens/homePage/widget/socialWidget.dart';
 import 'package:makasb/widgets/app_widgets.dart';
 
@@ -37,7 +38,7 @@ class _homePageState extends State<homePage> {
       const homeWidget(),
       const socialWidget(),
       const coinsWidget(),
-      const socialWidget()
+      const profileWidget()
     ];
 
 
