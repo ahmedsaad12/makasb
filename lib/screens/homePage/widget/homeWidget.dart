@@ -76,8 +76,8 @@ class _homeWidgetState extends State<homeWidget>
         SmoothPageIndicator(
           controller: _pageController, // PageController
           count: 10,
-          effect:
-              const ExpandingDotsEffect(expansionFactor: 2), // your preferred effect
+          effect: const ExpandingDotsEffect(
+              expansionFactor: 2), // your preferred effect
         ),
         const SizedBox(height: 10),
         Row(

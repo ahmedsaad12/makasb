@@ -44,17 +44,21 @@ class _homePageState extends State<homePage> {
 
     return Container(
         child: Scaffold(
-      body: Column(
-        mainAxisSize: MainAxisSize.max,
+extendBodyBehindAppBar: true,
+          body:
+              SafeArea(
+      child: Column(
+          mainAxisSize: MainAxisSize.max,
         children: [
           _buildAppBar(context, "0"),
-          Expanded(
-          child: screens.elementAt(indexpage),
+          Flexible(
+
+          child: IndexedStack (
+              index: indexpage,
+              children:screens),
             ),
-          ]),
-
-
-      bottomNavigationBar: BottomNavigationBar(
+          ])),
+    bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.white,
         showUnselectedLabels: true,
         unselectedItemColor: AppColors.grey6,
@@ -102,14 +106,26 @@ class _homePageState extends State<homePage> {
   Widget _buildAppBar(BuildContext context, String notificationCount) {
     return AppBar(
         backgroundColor: AppColors.white,
+        elevation: 10,
         flexibleSpace: Container(
-          height: 90,
+          decoration: BoxDecoration(color: AppColors.white,
+              boxShadow: [
+            BoxShadow(
+                color: AppColors.black.withOpacity(.2),
+                offset: const Offset(0.0, 1.0),
+                blurRadius: 2)
+          ]),
+          padding: EdgeInsetsDirectional.only(
+            start: 0.0,
+            bottom: 0.0,
+          ),
+          height: 50,
           alignment: Alignment.center,
           child: Center(
               child:
               Column(
                 children: [
-                  const SizedBox(height: 40),
+
                   Row(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
