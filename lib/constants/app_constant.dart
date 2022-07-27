@@ -4,6 +4,8 @@ class AppConstant {
   static const localImagePath = 'assets/images/';
   static const pageSplashRoute = '/';
   static const pageLoginRoute = '/loginPage';
+  static const pageSignupRoute = '/signupPage';
+
   static const pageHomeRoute = '/homePage';
 
 

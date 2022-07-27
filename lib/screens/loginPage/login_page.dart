@@ -1,4 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:makasb/constants/app_constant.dart';
 import 'package:makasb/screens/splashPage/splash_page.dart';
@@ -189,13 +190,20 @@ class _LoginPageState extends State<LoginPage> {
               text: TextSpan(
             style: TextStyle(color: AppColors.black),
             /*defining default style is optional */
+
             children: <TextSpan>[
+
               TextSpan(
                   text: 'dont_have_account?'.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               TextSpan(
                   text: 'login'.tr(),
+recognizer: TapGestureRecognizer()..onTap=(){
+  Navigator.of(context)
+      .pushReplacementNamed(AppConstant.pageSignupRoute);
+},
                   style: TextStyle(
+
                       color: AppColors.colorPrimary,
                       decoration: TextDecoration.underline,
                       fontSize: 16)),

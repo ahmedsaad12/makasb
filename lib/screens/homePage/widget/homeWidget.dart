@@ -202,13 +202,20 @@ class _homeWidgetState extends State<homeWidget>
           itemCount: _list.length,
           shrinkWrap: true,
           itemBuilder: (context, index) {
-            return Container(
-                height: 40,
+            return      SizedBox(
+
+                height: 60.0,
+                child: InkWell(
+                child: Card(
+                elevation: 1.0,
+                color: AppColors.grey3,
+                shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+
+
+
                 margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-                decoration: const BoxDecoration(
-                  color: AppColors.grey8,
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                ),
+
                 child: Row(
                   children: [
                     const SizedBox(width: 10),
@@ -217,7 +224,7 @@ class _homeWidgetState extends State<homeWidget>
                       style: const TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.white),
+                          color: AppColors.black),
                     ),
                     Expanded(
                       flex: 1,
@@ -228,7 +235,7 @@ class _homeWidgetState extends State<homeWidget>
                       style: const TextStyle(
                           fontSize: 20.0,
                           fontWeight: FontWeight.bold,
-                          color: AppColors.white),
+                          color: AppColors.black),
                     ),
                     Expanded(
                       flex: 1,
@@ -243,7 +250,7 @@ class _homeWidgetState extends State<homeWidget>
                       width: 10,
                     )
                   ],
-                ));
+                ))));
           },
         ),
       ]),

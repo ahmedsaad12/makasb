@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:makasb/constants/app_constant.dart';
 import 'package:makasb/screens/homePage/homePage.dart';
 import 'package:makasb/screens/loginPage/login_page.dart';
+import 'package:makasb/screens/signupPage/signup_page.dart';
 import 'package:makasb/screens/splashPage/splash_page.dart';
 
 class AppRoutes {
@@ -25,7 +26,10 @@ class AppRoutes {
         return MaterialPageRoute(builder: (context) =>
         const homePage()
         );
-
+      case AppConstant.pageSignupRoute :
+        return MaterialPageRoute(builder: (context) =>
+        const signuppage()
+        );
 
     }
   }

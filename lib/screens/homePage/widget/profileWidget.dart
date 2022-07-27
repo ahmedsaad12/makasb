@@ -263,6 +263,63 @@ class _profileWidgetState extends State<profileWidget>
               ),
             ),
           ),
+          Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Text(
+                  'followUs'.tr(),
+                  style: const TextStyle(
+                      color: AppColors.black,
+                      fontSize: 16.0,
+                      fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(
+                  height: 8.0,
+                ),
+                Row(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    InkWell(
+
+                        child: Image.asset(
+                          '${AppConstant.localImagePath}facebook.png',
+                          width: 40.0,
+                          height: 40.0,
+                        )),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
+                    InkWell(
+                        child: Image.asset(
+                          '${AppConstant.localImagePath}instagram.png',
+                          width: 40.0,
+                          height: 40.0,
+                        )),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
+                    InkWell(
+                        child: Image.asset(
+                          '${AppConstant.localImagePath}twitter.png',
+                          width: 40.0,
+                          height: 40.0,
+                        )),
+                    const SizedBox(
+                      width: 16.0,
+                    ),
+                    InkWell(
+                        child: Image.asset(
+                          '${AppConstant.localImagePath}snapchat.png',
+                          width: 40.0,
+                          height: 40.0,
+                        )),
+                  ],
+                )
+              ],
+            ),
+          )
 
         ]));
   }
