@@ -106,7 +106,7 @@ class _LoginPageState extends State<LoginPage> {
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
                   onChanged: (data) {
-                    cubit.loginModel.email=data;
+                    cubit.loginModel.email = data;
                   },
                   decoration: InputDecoration(
                       border: InputBorder.none,
@@ -147,12 +147,11 @@ class _LoginPageState extends State<LoginPage> {
                   autofocus: false,
                   obscureText: true,
                   cursorColor: AppColors.colorPrimary,
-
                   textInputAction: TextInputAction.next,
-    keyboardType: TextInputType.text,
-    onChanged: (data) {
-    cubit.loginModel.password=data;
-    },
+                  keyboardType: TextInputType.text,
+                  onChanged: (data) {
+                    cubit.loginModel.password = data;
+                  },
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'password'.tr(),
@@ -186,41 +185,36 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
           Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-    child: BlocBuilder<LoginCubit, LoginState>(
-    builder: (context, state) {
-    bool isValid = cubit.isLoginValid;
-    if (state is OnLoginVaildFaild) {
-    isValid = false;
-    } else if (state is OnLoginVaild) {
-    isValid = true;
-    }else if (state is OnError){
-
-    }
-    return MaterialButton(
-    onPressed: isValid
-    ? () {
-    cubit.login(context);
-    /*showConfirmCodeDialog();*/
-    //Navigator.pushNamed(context, AppConstant.pageUserSignUpRoleRoute);
-    }
-        : null,
-    height: 56.0,
-    disabledColor: AppColors.grey4,
-
-    child: Text(
-    'login'.tr(),
-    style:
-    TextStyle(color: AppColors.white, fontSize: 16.0),
-    ),
-    color:
-    isValid ? AppColors.colorPrimary : AppColors.grey4,
-    shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(8.0)),
-    );
-    },
-    ),
-    ),
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: BlocBuilder<LoginCubit, LoginState>(
+              builder: (context, state) {
+                bool isValid = cubit.isLoginValid;
+                if (state is OnLoginVaildFaild) {
+                  isValid = false;
+                } else if (state is OnLoginVaild) {
+                  isValid = true;
+                } else if (state is OnError) {}
+                return MaterialButton(
+                  onPressed: isValid
+                      ? () {
+                          cubit.login(context);
+                          /*showConfirmCodeDialog();*/
+                          //Navigator.pushNamed(context, AppConstant.pageUserSignUpRoleRoute);
+                        }
+                      : null,
+                  height: 56.0,
+                  disabledColor: AppColors.grey4,
+                  child: Text(
+                    'login'.tr(),
+                    style: TextStyle(color: AppColors.white, fontSize: 16.0),
+                  ),
+                  color: isValid ? AppColors.colorPrimary : AppColors.grey4,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(8.0)),
+                );
+              },
+            ),
+          ),
           SizedBox(height: 100),
           RichText(
               text: TextSpan(
@@ -228,18 +222,17 @@ class _LoginPageState extends State<LoginPage> {
             /*defining default style is optional */
 
             children: <TextSpan>[
-
               TextSpan(
                   text: 'dont_have_account?'.tr(),
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
               TextSpan(
                   text: 'login'.tr(),
-recognizer: TapGestureRecognizer()..onTap=(){
-  Navigator.of(context)
-      .pushReplacementNamed(AppConstant.pageSignupRoute);
-},
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(AppConstant.pageSignupRoute);
+                    },
                   style: TextStyle(
-
                       color: AppColors.colorPrimary,
                       decoration: TextDecoration.underline,
                       fontSize: 16)),
