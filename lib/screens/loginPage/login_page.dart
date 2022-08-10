@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:makasb/constants/app_constant.dart';
+import 'package:makasb/screens/loginPage/cubit/login_cubit.dart';
 import 'package:makasb/screens/splashPage/splash_page.dart';
 
 import 'package:makasb/colors/colors.dart';
@@ -52,6 +54,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   _buildLoginSection() {
+    LoginCubit cubit = BlocProvider.of<LoginCubit>(context);
+
     bool isHidden = true;
     return Container(
       padding: const EdgeInsets.all(10),
@@ -101,6 +105,9 @@ class _LoginPageState extends State<LoginPage> {
                   cursorColor: AppColors.colorPrimary,
                   keyboardType: TextInputType.emailAddress,
                   textInputAction: TextInputAction.next,
+                  onChanged: (data) {
+                    cubit.loginModel.email=data;
+                  },
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'email'.tr(),
@@ -140,8 +147,12 @@ class _LoginPageState extends State<LoginPage> {
                   autofocus: false,
                   obscureText: true,
                   cursorColor: AppColors.colorPrimary,
-                  keyboardType: TextInputType.text,
+
                   textInputAction: TextInputAction.next,
+    keyboardType: TextInputType.text,
+    onChanged: (data) {
+    cubit.loginModel.password=data;
+    },
                   decoration: InputDecoration(
                       border: InputBorder.none,
                       hintText: 'password'.tr(),
@@ -174,17 +185,42 @@ class _LoginPageState extends State<LoginPage> {
               )
             ],
           ),
-          ElevatedButton(
-            style: ElevatedButton.styleFrom(
-                primary: AppColors.colorPrimary,
-                elevation: 5,
-                shadowColor: AppColors.grey8),
-            onPressed: () {
-              Navigator.of(context)
-                  .pushReplacementNamed(AppConstant.pageHomeRoute);
-            },
-            child: Text('login'.tr()),
-          ),
+          Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+    child: BlocBuilder<LoginCubit, LoginState>(
+    builder: (context, state) {
+    bool isValid = cubit.isLoginValid;
+    if (state is OnLoginVaildFaild) {
+    isValid = false;
+    } else if (state is OnLoginVaild) {
+    isValid = true;
+    }else if (state is OnError){
+
+    }
+    return MaterialButton(
+    onPressed: isValid
+    ? () {
+    cubit.login(context);
+    /*showConfirmCodeDialog();*/
+    //Navigator.pushNamed(context, AppConstant.pageUserSignUpRoleRoute);
+    }
+        : null,
+    height: 56.0,
+    disabledColor: AppColors.grey4,
+
+    child: Text(
+    'login'.tr(),
+    style:
+    TextStyle(color: AppColors.white, fontSize: 16.0),
+    ),
+    color:
+    isValid ? AppColors.colorPrimary : AppColors.grey4,
+    shape: RoundedRectangleBorder(
+    borderRadius: BorderRadius.circular(8.0)),
+    );
+    },
+    ),
+    ),
           SizedBox(height: 100),
           RichText(
               text: TextSpan(

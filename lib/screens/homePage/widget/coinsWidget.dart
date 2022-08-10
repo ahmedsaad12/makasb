@@ -135,59 +135,64 @@ class _coinsWidgetState extends State<coinsWidget>
                     return Expanded(
                         child: InkWell(
                             child: Container(
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: AppColors.white,
-                          borderRadius: BorderRadius.circular(15)),
-                      child: Column(
-                        children: [
-                          const SizedBox(height: 10),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Text(
-                                "\$",
-                                style: TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.grey5),
-                              )
-                              ,
-                              Text(
-                                "5".tr(),
-                                style: const TextStyle(
-                                    fontSize: 20.0,
-                                    fontWeight: FontWeight.bold,
-                                    color: AppColors.colorPrimary),
-                              )
-                            ],
-                          ),
-                          Text(
-                            "5000".tr(),
-                            style: const TextStyle(
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.colorPrimary),
-                          ),
-                          Text(
-                            "point".tr(),
-                            style: const TextStyle(
-                                fontSize: 20.0, color: AppColors.grey1),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Text(
-                            "buy".tr(),
-                            style: const TextStyle(
-                                decoration: TextDecoration.underline,
-                                fontSize: 20.0,
-                                fontWeight: FontWeight.bold,
-                                color: AppColors.red),
-                          )
-                        ],
-                      ),
-                    )));
+                              alignment: Alignment.center,
+                              decoration:  BoxDecoration(
+                                  border: Border.all(color: AppColors.grey5),
+                                  color: AppColors.white,
+
+                                  borderRadius: BorderRadius.only(
+                                      topLeft: Radius.circular(0),
+                                      bottomLeft: Radius.circular(15),
+                                      topRight: Radius.circular(15),
+                                      bottomRight: Radius.circular(0))),
+                              child: Column(
+                                children: [
+                                  const SizedBox(height: 10),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Text(
+                                        "\$",
+                                        style: TextStyle(
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.grey5),
+                                      ),
+                                      Text(
+                                        "5".tr(),
+                                        style: const TextStyle(
+                                            fontSize: 20.0,
+                                            fontWeight: FontWeight.bold,
+                                            color: AppColors.colorPrimary),
+                                      )
+                                    ],
+                                  ),
+                                  Text(
+                                    "5000".tr(),
+                                    style: const TextStyle(
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.colorPrimary),
+                                  ),
+                                  Text(
+                                    "point".tr(),
+                                    style: const TextStyle(
+                                        fontSize: 20.0, color: AppColors.grey1),
+                                  ),
+                                  const SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    "buy".tr(),
+                                    style: const TextStyle(
+                                        decoration: TextDecoration.underline,
+                                        fontSize: 20.0,
+                                        fontWeight: FontWeight.bold,
+                                        color: AppColors.red),
+                                  )
+                                ],
+                              ),
+                            )));
                   },
                 )),
         const SizedBox(height: 10),

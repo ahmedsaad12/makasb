@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:makasb/colors/colors.dart';
 import 'package:makasb/constants/app_constant.dart';
+import 'package:makasb/screens/dialogpage/dialoginfopage.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class homeWidget extends StatefulWidget {
@@ -66,9 +67,9 @@ class _homeWidgetState extends State<homeWidget>
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-      scrollDirection: Axis.vertical,
-      child: Column(children: [
-        const SizedBox(height: 10),
+        scrollDirection: Axis.vertical,
+        child: Column(children: [
+            const SizedBox(height: 10),
         _userShow(),
         Container(
             constraints: const BoxConstraints.expand(height: 230),
@@ -83,7 +84,9 @@ class _homeWidgetState extends State<homeWidget>
         Row(
           children: [
             Transform.rotate(
-                angle: Localizations.localeOf(context).languageCode == 'en'
+                angle: Localizations
+                    .localeOf(context)
+                    .languageCode == 'en'
                     ? 0
                     : 3.14,
                 child: Image.asset(
@@ -125,135 +128,152 @@ class _homeWidgetState extends State<homeWidget>
                             child: Image.asset(
                                 height: 50,
                                 fit: BoxFit.cover,
-                                '${AppConstant.localImagePath}bottom_splash.png')))));
+                                '${AppConstant
+                                    .localImagePath}bottom_splash.png')))));
           },
         ),
         const SizedBox(height: 10),
         Row(
-          children: [
-            Transform.rotate(
-                angle: Localizations.localeOf(context).languageCode == 'en'
-                    ? 0
-                    : 3.14,
-                child: Image.asset(
-                  '${AppConstant.localImagePath}rectangle.png',
-                  width: 20.0,
-                  height: 40.0,
-                )),
-            Text(
-              "My Sites".tr(),
-              style: const TextStyle(
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold,
-                  color: AppColors.black),
-            ),
-            Expanded(
-              flex: 1,
-              child: Container(),
-            ),
-            SvgPicture.asset(
-              '${AppConstant.localImagePath}info.svg',
-              width: 20.0,
-              height: 20.0,
-            ),
-            const SizedBox(
-              width: 10,
-            ),
-          ],
-        ),
-        Container(
-            height: 40,
-            margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
-            decoration: const BoxDecoration(
-              color: AppColors.colorPrimary,
-              borderRadius: BorderRadius.all(Radius.circular(10)),
-            ),
-            child: Row(
-              children: [
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  "Site".tr(),
-                  style: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.white),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(),
-                ),
-                Text(
-                  "Site Name".tr(),
-                  style: const TextStyle(
-                      fontSize: 20.0,
-                      fontWeight: FontWeight.bold,
-                      color: AppColors.white),
-                ),
-                Expanded(
-                  flex: 1,
-                  child: Container(),
-                )
-              ],
-            )),
-        ListView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          itemCount: _list.length,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            return      SizedBox(
+            children: [
+        Transform.rotate(
+        angle: Localizations.localeOf(context).languageCode == 'en'
+            ? 0
+            : 3.14,
+        child: Image.asset(
+          '${AppConstant.localImagePath}rectangle.png',
+          width: 20.0,
+          height: 40.0,
+        )),
+    Text(
+    "My Sites".tr(),
+    style: const TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black),
+    ),
+    Expanded(
+    flex: 1,
+    child: Container(),
+    ),
+    InkWell(
+    onTap: () {
+    // todo : your code is here
+    showDialog(
+    context: context,
+    builder: (BuildContext context) {
+    return CustomDialog(
+    );
+    }
+    );
+    }
+,
 
-                height: 60.0,
-                child: InkWell(
-                child: Card(
-                elevation: 1.0,
-                color: AppColors.grey3,
-                shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
+    child: SvgPicture.asset(
+    '${AppConstant.localImagePath}info.svg',
+    width: 20.0,
+    height: 20.0,
+
+    )),
+    const SizedBox(
+    width: 10,
+    ),
+    ],
+    ),
+    Container(
+    height: 40,
+    margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
+    decoration: const BoxDecoration(
+    color: AppColors.colorPrimary,
+    borderRadius: BorderRadius.all(Radius.circular(10)),
+    ),
+    child: Row(
+    children: [
+    const SizedBox(
+    width: 10,
+    ),
+    Text(
+    "Site".tr(),
+    style: const TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white),
+    ),
+    Expanded(
+    flex: 1,
+    child: Container(),
+    ),
+    Text(
+    "Site Name".tr(),
+    style: const TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
+    color: AppColors.white),
+    ),
+    Expanded(
+    flex: 1,
+    child: Container(),
+    )
+    ],
+    )),
+    ListView.builder(
+    physics: const NeverScrollableScrollPhysics(),
+    itemCount: _list.length,
+    shrinkWrap: true,
+    itemBuilder: (context, index) {
+    return SizedBox(
+
+    height: 60.0,
+    child: InkWell(
+    child: Card(
+    elevation: 1.0,
+    color: AppColors.grey3,
+    shape:
+    RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.0)),
 
 
+    margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
 
-                margin: const EdgeInsets.fromLTRB(10, 10, 10, 10),
-
-                child: Row(
-                  children: [
-                    const SizedBox(width: 10),
-                    Text(
-                      "Site".tr(),
-                      style: const TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.black),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(),
-                    ),
-                    Text(
-                      "Site Name".tr(),
-                      style: const TextStyle(
-                          fontSize: 20.0,
-                          fontWeight: FontWeight.bold,
-                          color: AppColors.black),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: Container(),
-                    ),
-                    SvgPicture.asset(
-                      '${AppConstant.localImagePath}remove.svg',
-                      width: 20.0,
-                      height: 20.0,
-                    ),
-                    const SizedBox(
-                      width: 10,
-                    )
-                  ],
-                ))));
-          },
-        ),
-      ]),
+    child: Row(
+    children: [
+    const SizedBox(width: 10),
+    Text(
+    "Site".tr(),
+    style: const TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black),
+    ),
+    Expanded(
+    flex: 1,
+    child: Container(),
+    ),
+    Text(
+    "Site Name".tr(),
+    style: const TextStyle(
+    fontSize: 20.0,
+    fontWeight: FontWeight.bold,
+    color: AppColors.black),
+    ),
+    Expanded(
+    flex: 1,
+    child: Container(),
+    ),
+    SvgPicture.asset(
+    '${AppConstant.localImagePath}remove.svg',
+    width: 20.0,
+    height: 20.0,
+    ),
+    const SizedBox(
+    width: 10,
+    )
+    ],
+    ))));
+    },
+    )
+    ,
+    ]
+    )
+    ,
     );
   }
 

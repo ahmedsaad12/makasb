@@ -6,8 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:makasb/constants/app_constant.dart';
-import 'package:makasb/routes/app_routes.dart';
-import 'package:makasb/screens/splashPage/splash_page.dart';
 import 'package:makasb/colors/colors.dart';
 import 'package:makasb/widgets/app_widgets.dart';
 
@@ -19,9 +17,9 @@ class signuppage extends StatefulWidget {
 }
 
 class _signuppageState extends State<signuppage>
-    with SingleTickerProviderStateMixin {
+ with SingleTickerProviderStateMixin {
   bool isHidden = true;
-    File uri=File("");
+  File uri = File("");
   late AnimationController _controller;
 
   @override
@@ -40,16 +38,28 @@ class _signuppageState extends State<signuppage>
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
 
-    return Material(
-      color: AppColors.white,
-       child: SingleChildScrollView(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: AppColors.white,
+        centerTitle: true,
+        title: Text(
+          'signup'.tr(),
+          style: const TextStyle(
+              color: AppColors.black,
+              fontSize: 16.0,
+              fontWeight: FontWeight.bold),
+        ),
+        leading: AppWidget.buildBackArrow(context: context),
+      ),
+      backgroundColor: AppColors.white,
+      body: SingleChildScrollView(
         scrollDirection: Axis.vertical,
         padding: EdgeInsets.zero,
-        physics: ClampingScrollPhysics(),
+        physics: const ClampingScrollPhysics(),
         child: ListView(
           shrinkWrap: true,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 30,
             ),
             SizedBox(
@@ -63,46 +73,36 @@ class _signuppageState extends State<signuppage>
                       width: 96.0,
                       height: 96.0,
                       decoration: BoxDecoration(
-                          image:
-                        uri.path.isEmpty?
-                         DecorationImage(
-                        image: AssetImage(
-
-                            '${AppConstant.localImagePath}avatar.png'),
-                      )
-            :
-              DecorationImage(
-                image: FileImage(
-
-               uri),
-       )
-            ),
+                          image: uri.path.isEmpty
+                              ? const DecorationImage(
+                                  image: AssetImage(
+                                      '${AppConstant.localImagePath}avatar.png'),
+                                )
+                              : DecorationImage(
+                                  image: FileImage(uri),
+                                )),
                     )),
                     Positioned(
                         top: 120.0,
                         left: width / 2 - 40,
                         child: SizedBox(
-
                           child: Container(
-
                             width: 30,
                             height: 30,
-                            padding: EdgeInsets.all(5),
+                            padding: const EdgeInsets.all(5),
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(96),
                                 color: AppColors.grey4,
-
-                                border: Border.all(width: 2,color: AppColors.grey1)),
+                                border: Border.all(
+                                    width: 2, color: AppColors.grey1)),
                             child: GestureDetector(
-                              onTap: ()  {
-
-                                _getFromGallery();
-                              },
-                            child: SvgPicture.asset(
-
-                              alignment: Alignment.center,
-                              "${AppConstant.localImagePath}edit.svg",
-                            )),
+                                onTap: () {
+                                  _getFromGallery();
+                                },
+                                child: SvgPicture.asset(
+                                  alignment: Alignment.center,
+                                  "${AppConstant.localImagePath}edit.svg",
+                                )),
                           ),
                         )),
                   ],
@@ -113,17 +113,16 @@ class _signuppageState extends State<signuppage>
       ),
     );
   }
-  _buildLoginSection() {
 
+  _buildLoginSection() {
     return Container(
       padding: const EdgeInsets.all(10),
       child: Column(
         children: [
-
           Row(
             children: [
               AppWidget.svg('ic_user.svg', AppColors.colorPrimary, 15.0, 15.0),
-              SizedBox(width: 5), // give it width
+              const SizedBox(width: 5), // give it width
 
               Text(
                 'User Name'.tr(),
@@ -163,7 +162,7 @@ class _signuppageState extends State<signuppage>
           Row(
             children: [
               AppWidget.svg('email.svg', AppColors.colorPrimary, 15.0, 15.0),
-              SizedBox(width: 5), // give it width
+              const SizedBox(width: 5), // give it width
 
               Text(
                 'email'.tr(),
@@ -200,7 +199,7 @@ class _signuppageState extends State<signuppage>
           Row(
             children: [
               AppWidget.svg('lock.svg', AppColors.colorPrimary, 15.0, 15.0),
-              SizedBox(width: 5), // give it width
+              const SizedBox(width: 5), // give it width
 
               Text(
                 'email'.tr(),
@@ -241,17 +240,19 @@ class _signuppageState extends State<signuppage>
                         },
                         child: isHidden
                             ? const Icon(
-                          Icons.visibility,
-                        )
+                                Icons.visibility,
+                              )
                             : const Icon(Icons.visibility_off),
                       )),
                 ),
               )),
-       SizedBox(height: 20,),
+          const SizedBox(
+            height: 20,
+          ),
           Row(
             children: [
               AppWidget.svg('lock.svg', AppColors.colorPrimary, 15.0, 15.0),
-              SizedBox(width: 5), // give it width
+              const SizedBox(width: 5), // give it width
 
               Text(
                 'email'.tr(),
@@ -292,8 +293,8 @@ class _signuppageState extends State<signuppage>
                         },
                         child: isHidden
                             ? const Icon(
-                          Icons.visibility,
-                        )
+                                Icons.visibility,
+                              )
                             : const Icon(Icons.visibility_off),
                       )),
                 ),
@@ -309,34 +310,35 @@ class _signuppageState extends State<signuppage>
             },
             child: Text('login'.tr()),
           ),
-          SizedBox(height: 100),
+          const SizedBox(height: 50),
           RichText(
               text: TextSpan(
-                style: TextStyle(color: AppColors.black),
-                /*defining default style is optional */
+            style: const TextStyle(color: AppColors.black),
+            /*defining default style is optional */
 
-                children: <TextSpan>[
-
-                  TextSpan(
-                      text: 'dont_have_account?'.tr(),
-                      style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
-                  TextSpan(
-                      text: 'login'.tr(),
-                      recognizer: TapGestureRecognizer()..onTap=(){
-                        Navigator.of(context)
-                            .pushReplacementNamed(AppConstant.pageSignupRoute);
-                      },
-                      style: TextStyle(
-
-                          color: AppColors.colorPrimary,
-                          decoration: TextDecoration.underline,
-                          fontSize: 16)),
-                ],
-              ))
+            children: <TextSpan>[
+              TextSpan(
+                  text: 'dont_have_account?'.tr(),
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold, fontSize: 16)),
+              TextSpan(
+                  text: 'login'.tr(),
+                  recognizer: TapGestureRecognizer()
+                    ..onTap = () {
+                      Navigator.of(context)
+                          .pushReplacementNamed(AppConstant.pageSignupRoute);
+                    },
+                  style: const TextStyle(
+                      color: AppColors.colorPrimary,
+                      decoration: TextDecoration.underline,
+                      fontSize: 16)),
+            ],
+          ))
         ],
       ),
     );
   }
+
   _getFromGallery() async {
     PickedFile? pickedFile = await ImagePicker().getImage(
       source: ImageSource.gallery,
@@ -345,7 +347,9 @@ class _signuppageState extends State<signuppage>
     );
     if (pickedFile != null) {
       File imageFile = File(pickedFile.path);
-     uri=imageFile;
+      setState(() {
+        uri = imageFile;
+      });
     }
   }
 }

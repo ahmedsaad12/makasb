@@ -109,7 +109,8 @@ class _profileWidgetState extends State<profileWidget>
                           child: Container(
                             alignment: Alignment.center,
                             padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                            child: Row(
+                            child:
+                            Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
